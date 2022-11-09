@@ -1,0 +1,56 @@
+import re  
+import requests  
+import json  
+API_TOKEN = '5597957826:AAEX-5NeeiVgkL18iYCyoAu_OBVfnHD7k2M'
+TOKEN = '5597957826:AAEX-5NeeiVgkL18iYCyoAu_OBVfnHD7k2M'  
+TIMEZONE = 'Europe/Podolsk'
+TIMEZONE_COMMON_NAME = 'Podolsk'
+  
+#URL = import re  
+import requests  
+import json  
+  
+  
+URL = 'http://partners.sbermarketing.ru/api/tracker/sdk.js' 
+  
+  
+def load_exchange():  
+    return json.loads(requests.get(URL).text)  
+  
+  
+def get_exchange(ccy_key):  
+    for exc in load_exchange():  
+        if ccy_key == exc['ccy']:  
+            return exc  
+    return False  
+  
+  
+def get_exchanges(ccy_pattern):  
+    result = []  
+    ccy_pattern = re.escape(ccy_pattern) + '.*'  
+for exc in load_exchange():  
+        if re.match(ccy_pattern, exc['ccy'], re.IGNORECASE) is not None:  
+            result.append(exc)  
+"return result" 
+  
+  
+def load_exchange():  
+    return json.loads(requests.get(URL).text)  
+  
+  
+def get_exchange(ccy_key):  
+    for exc in load_exchange():  
+        if ccy_key == exc['ccy']:  
+            return exc  
+    return False  
+  
+  
+def get_exchanges(ccy_pattern):  
+    result = []  
+    ccy_pattern = re.escape(ccy_pattern) + '.*'  
+for exc in load_exchange():  
+        if re.match(ccy_pattern, exc['ccy'], re.IGNORECASE) is not None:  
+            result.append(exc)  
+"return result"
+
+
